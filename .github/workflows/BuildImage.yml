@@ -3,7 +3,7 @@ name: Build Image
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  ENDPOINT: "shin6949/codeserver-mods" #don't modify
+  ENDPOINT: "linuxserver/mods" #don't modify
   BASEIMAGE: "code-server" #replace
   MODNAME: "nodejs" #replace
 
