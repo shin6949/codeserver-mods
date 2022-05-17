@@ -1,6 +1,6 @@
 FROM scratch
 
-LABEL maintainer="aptalca"
+LABEL maintainer="cocoblue@kakao.com"
 
 # copy local files
 COPY root/ /
