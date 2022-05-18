@@ -1,5 +1,10 @@
 #!/usr/bin/with-contenv bash
 
-echo "**** installing java11 dev environment ****"
-apt-get install -y \
-    openjdk-11-jdk
+echo "**** installing MS OpenJDK 11 dev environment ****"
+# base image of code-server is ubuntu:20.04 so, set the 20.04 repo.
+curl https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -o packages-microsoft-prod.deb
+dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+
+apt-get update
+apt-get install apt-transport-https msopenjdk-11 -y
