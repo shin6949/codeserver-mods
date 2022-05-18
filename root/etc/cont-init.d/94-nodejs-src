@@ -5,10 +5,15 @@ if ! dpkg -l | grep gnupg > /dev/null; then
     apt-get update && apt-get install -y gnupg
 fi
 
+# Check if a specific version is specified 
+if [ ! -z "$NODE_VERSION" ]; then
+    export NODE_VERSION=16
+fi
+
 source /etc/lsb-release
 [[ ! -f "/etc/apt/sources.list.d/nodesource.list" ]] && \
     curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-    echo "deb https://deb.nodesource.com/node_16.x ${DISTRIB_CODENAME} main" \
+    echo "deb https://deb.nodesource.com/node_${NODE_VERSION}.x ${DISTRIB_CODENAME} main" \
         > /etc/apt/sources.list.d/nodesource.list
 [[ ! -f "/etc/apt/sources.list.d/yarn.list" ]] && \
     curl -s https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
